@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sortmart - Online Shopping</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="notice">Free delivery on orders above ₹499. Use code SAVE10 for 10% off.</div>
+
+<!-- Top bar: logo, search, wishlist, cart, login -->
+<header class="head">
+  <div class="wrap row">
+    <a class="logo" href="#">Sort<b>mart</b></a>
+    <input id="search" type="search" placeholder="Search for phones, shoes, books..." aria-label="Search products">
+    <button class="ibtn" onclick="showWishlist()" aria-label="Wishlist">♥ <span id="wcount">0</span></button>
+    <button class="ibtn" onclick="openCart()" aria-label="Cart">🛒 <span id="ccount">0</span></button>
+    <button class="ibtn" id="userBtn" onclick="showAccount()">Log in</button>
+  </div>
+</header>
+
+<!-- Hero banner -->
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Big deals on things you actually need</h1>
+      <p>Phones, fashion, home, beauty, sports and books. Delivered to your door with easy 7-day returns.</p>
+      <div class="timer">Today's deals end in <b id="timer">00:00:00</b></div><br>
+      <a class="btn big sun" href="#shop">Start shopping</a>
+    </div>
+    <div class="tiles"><span>📱</span><span>👟</span><span>🎧</span><span>☕</span><span>📚</span><span>⌚</span></div>
+  </div>
+</section>
+
+<!-- Products -->
+<main class="wrap" id="shop">
+  <div class="chips" id="chips"></div>
+  <div class="tools">
+    <span id="count"></span>
+    <label>Max price
+      <select id="price">
+        <option value="0">Any</option><option value="500">₹500</option><option value="1000">₹1,000</option>
+        <option value="3000">₹3,000</option><option value="10000">₹10,000</option>
+      </select>
+    </label>
+    <label>Sort by
+      <select id="sort">
+        <option value="featured">Featured</option>
+        <option value="price-asc">Price: low to high</option>
+        <option value="price-desc">Price: high to low</option>
+        <option value="rating-desc">Top rated</option>
+        <option value="sold-desc">Most popular</option>
+        <option value="name-asc">Name: A to Z</option>
+      </select>
+    </label>
+    <label>Algorithm
+      <select id="algo">
+        <option value="merge">Merge sort</option>
+        <option value="quick">Quick sort</option>
+        <option value="insertion">Insertion sort</option>
+        <option value="bubble">Bubble sort</option>
+      </select>
+    </label>
+  </div>
+  <div class="grid" id="grid"></div>
+</main>
+
+<section class="wrap perks">
+  <div><b>🚚 Free delivery</b><br>On orders above ₹499</div>
+  <div><b>↩️ Easy returns</b><br>7 days, no questions asked</div>
+  <div><b>🔒 Secure payment</b><br>UPI, card or cash on delivery</div>
+  <div><b>💬 Support</b><br>Help is available every day</div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div><h3>Sortmart</h3><p>Shop smart. Sort smarter.</p></div>
+    <div><h3>Coupons to try</h3><p>SAVE10 for 10% off<br>WELCOME100 for ₹100 off</p></div>
+    <div>
+      <h3>Get offers in your inbox</h3>
+      <form onsubmit="event.preventDefault(); toast('Thanks for subscribing!'); this.reset()">
+        <input type="email" placeholder="Your email" required aria-label="Email">
+        <button class="btn sun">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</footer>
+
+<!-- Cart drawer, popup window and message box -->
+<div class="shade" id="shade" onclick="closeAll()"></div>
+<aside class="drawer" id="drawer"></aside>
+<div class="modal" id="modal" hidden><div class="box" id="box"></div></div>
+<div class="toast" id="toast" role="status"></div>
+
+<script src="products.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
